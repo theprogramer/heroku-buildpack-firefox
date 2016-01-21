@@ -2,6 +2,8 @@
 
 set -e
 
+bp_dir=$(cd $(dirname $0); cd ..; pwd)
+
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
@@ -30,3 +32,18 @@ mkdir -p $CACHE_DIR/$ARCHIVE_NAME
 mkdir -p $BUILD_DIR/vendor
 tar jxf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR
 mv $CACHE_DIR/$ARCHIVE_NAME $BUILD_DIR/vendor/
+
+echo "-----> exporting PATH"
+PROFILE_PATH="$BUILD_DIR/.profile.d/firefox.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+cat << EOF > $PROFILE_PATH
+export PATH="\$HOME/vendor/firefox:\$PATH"
+export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:\$HOME/vendor/firefox"
+EOF
+
+if [ -w ${bp_dir} ]; then
+  cat << EOF > ${bp_dir}/export
+export PATH=$BUILD_DIR/vendor/firefox:\$PATH
+export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:$BUILD_DIR/vendor/firefox"
+EOF
+fi
