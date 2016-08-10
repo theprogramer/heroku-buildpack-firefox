@@ -31,15 +31,17 @@ fi
 echo "-----> Extracting chromedriver binaries to ${BUILD_DIR}/vendor/${ARCHIVE_NAME}"
 mkdir -p $CACHE_DIR/$ARCHIVE_NAME
 mkdir -p $BUILD_DIR/vendor
+cd $BUILD_DIR/vendor
 unzip $CACHE_DIR/$FILE_NAME
+cd $bp_dir
 # tar jxf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR
-mv $CACHE_DIR/$FILE_NAME $BUILD_DIR/vendor/
+# mv $CACHE_DIR/$FILE_NAME $BUILD_DIR/vendor/
 
 echo "-----> exporting PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/chromedriver.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 cat << EOF > $PROFILE_PATH
-export PATH="\$HOME/vendor/chromedriver:\$PATH"
+export PATH="\$HOME/vendor:\$PATH"
 export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:\$HOME/vendor/chromedriver"
 EOF
 
