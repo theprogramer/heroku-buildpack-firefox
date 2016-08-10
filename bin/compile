@@ -18,7 +18,7 @@ ENV_VERSION=$ENV_DIR/FIREFOX_VERSION
 
 # Buildpack URL
 ARCHIVE_NAME=chromedriver
-FILE_NAME=${ARCHIVE_NAME}-${VERSION}.tar.bz2
+FILE_NAME=${ARCHIVE_NAME}.zip
 # BUILDPACK_FIREFOX_PACKAGE="https://download.mozilla.org/?product=firefox-${VERSION}-SSL&os=${PLATFORM}&lang=${LANG}"
 BUILDPACK_CHROMEDRIVER_PACKAGE="http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip"
 
