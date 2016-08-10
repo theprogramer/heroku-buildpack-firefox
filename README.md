@@ -9,10 +9,10 @@ Usage
 Example usage:
 
 ```shell
-$ heroku create --stack cedar --buildpack http://github.com/bensomers/firefox-buildpack
+$ heroku create --stack cedar --buildpack http://github.com/lordnibbler/firefox-buildpack
 
 # or if your app is already created:
-$ heroku config:add BUILDPACK_URL=http://github.com/bensomers/firefox-buildpack
+$ heroku config:add BUILDPACK_URL=http://github.com/lordnibbler/firefox-buildpack
 
 $ git push heroku master
 ```
