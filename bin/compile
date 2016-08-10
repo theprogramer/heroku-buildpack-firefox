@@ -31,8 +31,9 @@ fi
 echo "-----> Extracting chromedriver binaries to ${BUILD_DIR}/vendor/${ARCHIVE_NAME}"
 mkdir -p $CACHE_DIR/$ARCHIVE_NAME
 mkdir -p $BUILD_DIR/vendor
-tar jxf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR
-mv $CACHE_DIR/$ARCHIVE_NAME $BUILD_DIR/vendor/
+unzip $CACHE_DIR/$FILE_NAME
+# tar jxf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR
+mv $CACHE_DIR/$FILE_NAME $BUILD_DIR/vendor/
 
 echo "-----> exporting PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/chromedriver.sh"
